@@ -19,22 +19,3 @@ spec:
         image: camunda/camunda-bpm-platform
         ports:
         - containerPort: 8080
-      nodeSelector:
-        node_type: node
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: camunda-service
-  labels:
-    app: camunda
-spec:
-  type: NodePort
-  selector:
-    app: camunda
-  ports:
-  - name: bpm
-    port: 8080
-    protocol: TCP
-    nodePort: 30020
-  sessionAffinity: ClientIP
